@@ -34,3 +34,6 @@ Mobile.pressBack()
 'validate shop\'s categories screen appearance'
 MobileBuiltInKeywords.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen' , [('package') : ProjectConstants.PACKAGENAME]), 0)
 
+Mobile.swipe(0, 200, 0, 750)
+
+Mobile.swipe(0, 200, 0, 750)

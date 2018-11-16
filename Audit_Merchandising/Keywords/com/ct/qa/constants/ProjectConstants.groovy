@@ -42,7 +42,7 @@ import WebUiBuiltInKeywords as WebUI
 public class ProjectConstants {
 
 	//variables for excel file and sheets
-	public static final String EXCEL_FILEPATH = "G:\\Audit_Merchandising\\Audit_Merchandising.xlsx"
+	public static final String EXCEL_FILEPATH = "F:\\Git Projects\\Audit_Merchandising\\Audit_Merchandising\\Audit_Merchandising.xlsx"
 	public static final String CHANNEL_PRODUCTSSHEET = "Channel Products"
 	public static final String CHILLER_PRODUCTSSHEET = "Chiller Products"
 	public static final String DISTRIBUTION_SHEET = "Distribution Point"

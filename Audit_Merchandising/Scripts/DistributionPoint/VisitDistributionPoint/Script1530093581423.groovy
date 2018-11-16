@@ -70,7 +70,3 @@ MobileBuiltInKeywords.tap(findTestObject('DistributionPoint/DistributionPoint_Su
 MobileBuiltInKeywords.verifyElementText(findTestObject('DashboardScreenElements/Validate_DashboardScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Dashboard')
 
-'tap on start your day button'
-MobileBuiltInKeywords.tap(findTestObject('DashboardScreenElements/StartYourDay', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
-

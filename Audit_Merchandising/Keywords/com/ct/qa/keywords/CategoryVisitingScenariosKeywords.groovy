@@ -123,17 +123,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				CommonKeywords.takeCategoryPrePicture()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/VisitNestradeWithDSA"), null)
 			}
-			else if(categoryname.equalsIgnoreCase("Competition Tracking")){
-//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-//				CommonKeywords.takeCategoryPrePicture()
-//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/VisitNestradeWithDSA"), null)
+			else if(categoryname.equalsIgnoreCase("Complaint Tracking")){
+				//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
+				//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				//				CommonKeywords.takeCategoryPrePicture()
+				//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/VisitNestradeWithDSA"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
-//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-//				CommonKeywords.takeCategoryPrePicture()
-//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/VisitNestradeWithDSA"), null)
+				//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
+				//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				//				CommonKeywords.takeCategoryPrePicture()
+				//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/VisitNestradeWithDSA"), null)
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
@@ -142,6 +142,8 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				CommonKeywords.takeCategoryPrePicture()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingCategories/VisitRemainingCategoriesWithDSA"), null)
 			}
+			MobileBuiltInKeywords.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen', [('package') : ProjectConstants.PACKAGENAME]),
+			0)
 		}
 		while(true){
 			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -204,23 +206,23 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				CommonKeywords.takeCategoryPrePicture()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/VisitNestradeWithDSA"), null)
 			}
-			else if(lastitemnameafterswipe.equalsIgnoreCase("Competition Tracking")){
+			else if(lastitemnameafterswipe.equalsIgnoreCase("Complaint Tracking")){
 				lastvisitedcategory = lastitemnameafterswipe
 				Mobile.swipe(0, 200, 0, 750)
 				Mobile.swipe(0, 200, 0, 750)
-//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-//				CommonKeywords.takeCategoryPrePicture()
-//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/VisitNestradeWithDSA"), null)
+				//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
+				//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				//				CommonKeywords.takeCategoryPrePicture()
+				//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/VisitNestradeWithDSA"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Survey")){
 				lastvisitedcategory = lastitemnameafterswipe
 				Mobile.swipe(0, 200, 0, 750)
 				Mobile.swipe(0, 200, 0, 750)
-//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-//				CommonKeywords.takeCategoryPrePicture()
-//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/VisitNestradeWithDSA"), null)
+				//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
+				//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				//				CommonKeywords.takeCategoryPrePicture()
+				//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/VisitNestradeWithDSA"), null)
 			}
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
@@ -239,6 +241,8 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 					break
 				}
 			}
+			MobileBuiltInKeywords.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen', [('package') : ProjectConstants.PACKAGENAME]),
+			0)
 		}
 	}
 	@Keyword
