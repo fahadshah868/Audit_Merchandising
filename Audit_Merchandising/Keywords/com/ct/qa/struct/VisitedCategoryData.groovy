@@ -27,14 +27,28 @@ import WebUiBuiltInKeywords as WebUI
 
 public class VisitedCategoryData {
 	public String maincategory
+	public String firstvisit_categoryremark
+	public String overwrite_categoryremark
 	public ArrayList<TaggedChillersRemark> taggedchillersremark
-	public String productcategory
-	public ArrayList<ShopProductsData> shopproductsdata
+	public ArrayList<ProductCategoryWithProducts> productcategorywithproducts
 
 	public VisitedCategoryData(){
 		this.taggedchillersremark = new ArrayList<TaggedChillersRemark>()
+		this.productcategorywithproducts = new ArrayList<ProductCategoryWithProducts>()
 	}
 
+	public String getFirstvisit_categoryremark() {
+		return firstvisit_categoryremark;
+	}
+	public void setFirstvisit_categoryremark(String firstvisit_categoryremark) {
+		this.firstvisit_categoryremark = firstvisit_categoryremark;
+	}
+	public String getOverwrite_categoryremark() {
+		return overwrite_categoryremark;
+	}
+	public void setOverwrite_categoryremark(String overwrite_categoryremark) {
+		this.overwrite_categoryremark = overwrite_categoryremark;
+	}
 	public String getMaincategory() {
 		return maincategory;
 	}
@@ -47,16 +61,10 @@ public class VisitedCategoryData {
 	public void setTaggedchillersremark(TaggedChillersRemark taggedchillersremark) {
 		this.taggedchillersremark.add(taggedchillersremark);
 	}
-	public String getProductcategory() {
-		return productcategory;
+	public ArrayList<ProductCategoryWithProducts> getProductcategorywithproducts() {
+		return productcategorywithproducts;
 	}
-	public void setProductcategory(String productcategory) {
-		this.productcategory = productcategory;
-	}
-	public ArrayList<ShopProductsData> getShopProductsdata() {
-		return shopproductsdata;
-	}
-	public void setShopProductsdata(ArrayList<ShopProductsData> shopproductsdata) {
-		this.shopproductsdata = shopproductsdata;
+	public void setProductcategorywithproducts(ProductCategoryWithProducts productcategorywithproducts) {
+		this.productcategorywithproducts.add(productcategorywithproducts);
 	}
 }

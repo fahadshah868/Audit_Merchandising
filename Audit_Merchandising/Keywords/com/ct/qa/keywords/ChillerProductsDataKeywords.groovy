@@ -37,7 +37,7 @@ import com.ct.qa.struct.LoadProductsData
 import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.ShopProductsData
 import com.ct.qa.struct.TaggedChillersRemark
-import com.ct.qa.struct.UnmatchedProducts
+import com.ct.qa.struct.UnmatchedItems
 import com.ct.qa.struct.VisitedCategoryData
 import com.ct.qa.struct.VisitedChillerProductsCategoryData
 import com.ct.qa.struct.VisitedShopDataInfo
@@ -47,16 +47,16 @@ public class ChillerProductsDataKeywords {
 
 	@Keyword
 	def visitChillerAvailableProductCategories(int flag){
-		UnmatchedProducts unmatchedproducts_status = CompareDataKeywords.compareChillerWiseProductsCategories()
-		if(unmatchedproducts_status.getStatus() == 2){
+		UnmatchedItems unmatcheditems = CompareDataKeywords.compareChillerWiseProductsCategories()
+		if(unmatcheditems.getStatus() == 2){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			TaggedChillersRemark taggedchillerremark = new TaggedChillersRemark()
 			MissingChillerProductsCategoryData missingchillercategory = new MissingChillerProductsCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			taggedchillerremark.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-			taggedchillerremark.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
-			missingchillercategory.setProductcategories(unmatchedproducts_status.getProducts())
-			missingchillercategory.setErrormessage_forproductcategories(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_NOTMATCH)
+			taggedchillerremark.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremark.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+			missingchillercategory.setProductcategories(unmatcheditems.getItems())
+			missingchillercategory.setErrormessage_forproductcategories(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 			taggedchillerremark.setMissingchillerproductscategories(missingchillercategory)
 			missingcategorydata.setTaggedchillersremarks(taggedchillerremark)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -68,15 +68,15 @@ public class ChillerProductsDataKeywords {
 				}
 			}
 		}
-		else if(unmatchedproducts_status.getStatus() == 1){
+		else if(unmatcheditems.getStatus() == 1){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			TaggedChillersRemark taggedchillerremark = new TaggedChillersRemark()
 			MissingChillerProductsCategoryData missingchillercategory = new MissingChillerProductsCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			taggedchillerremark.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-			taggedchillerremark.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
-			missingchillercategory.setProductcategories(unmatchedproducts_status.getProducts())
-			missingchillercategory.setErrormessage_forproductcategories(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MORE)
+			taggedchillerremark.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremark.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+			missingchillercategory.setProductcategories(unmatcheditems.getItems())
+			missingchillercategory.setErrormessage_forproductcategories(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 			taggedchillerremark.setMissingchillerproductscategories(missingchillercategory)
 			missingcategorydata.setTaggedchillersremarks(taggedchillerremark)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -88,15 +88,15 @@ public class ChillerProductsDataKeywords {
 				}
 			}
 		}
-		else if(unmatchedproducts_status.getStatus() == -1){
+		else if(unmatcheditems.getStatus() == -1){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			TaggedChillersRemark taggedchillerremark = new TaggedChillersRemark()
 			MissingChillerProductsCategoryData missingchillercategory = new MissingChillerProductsCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			taggedchillerremark.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-			taggedchillerremark.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
-			missingchillercategory.setProductcategories(unmatchedproducts_status.getProducts())
-			missingchillercategory.setErrormessage_forproductcategories(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MISSING)
+			taggedchillerremark.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremark.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+			missingchillercategory.setProductcategories(unmatcheditems.getItems())
+			missingchillercategory.setErrormessage_forproductcategories(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 			taggedchillerremark.setMissingchillerproductscategories(missingchillercategory)
 			missingcategorydata.setTaggedchillersremarks(taggedchillerremark)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -127,16 +127,16 @@ public class ChillerProductsDataKeywords {
 	}
 	@Keyword
 	def visitChillerNotAvailableProductCategories(int flag){
-		UnmatchedProducts unmatchedproducts_status = CompareDataKeywords.compareChannelWiseProductsCategories()
-		if(unmatchedproducts_status.getStatus() == 2){
+		UnmatchedItems unmatcheditems = CompareDataKeywords.compareChannelWiseProductsCategories()
+		if(unmatcheditems.getStatus() == 2){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			TaggedChillersRemark taggedchillerremark = new TaggedChillersRemark()
 			MissingChillerProductsCategoryData missingchillercategory = new MissingChillerProductsCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			taggedchillerremark.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-			taggedchillerremark.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
-			missingchillercategory.setProductcategories(unmatchedproducts_status.getProducts())
-			missingchillercategory.setErrormessage_forproductcategories(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_NOTMATCH)
+			taggedchillerremark.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremark.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+			missingchillercategory.setProductcategories(unmatcheditems.getItems())
+			missingchillercategory.setErrormessage_forproductcategories(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 			taggedchillerremark.setMissingchillerproductscategories(missingchillercategory)
 			missingcategorydata.setTaggedchillersremarks(taggedchillerremark)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -148,15 +148,15 @@ public class ChillerProductsDataKeywords {
 				}
 			}
 		}
-		else if(unmatchedproducts_status.getStatus() == 1){
+		else if(unmatcheditems.getStatus() == 1){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			TaggedChillersRemark taggedchillerremark = new TaggedChillersRemark()
 			MissingChillerProductsCategoryData missingchillercategory = new MissingChillerProductsCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			taggedchillerremark.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-			taggedchillerremark.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
-			missingchillercategory.setProductcategories(unmatchedproducts_status.getProducts())
-			missingchillercategory.setErrormessage_forproductcategories(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MORE)
+			taggedchillerremark.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremark.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+			missingchillercategory.setProductcategories(unmatcheditems.getItems())
+			missingchillercategory.setErrormessage_forproductcategories(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 			taggedchillerremark.setMissingchillerproductscategories(missingchillercategory)
 			missingcategorydata.setTaggedchillersremarks(taggedchillerremark)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -168,15 +168,15 @@ public class ChillerProductsDataKeywords {
 				}
 			}
 		}
-		else if(unmatchedproducts_status.getStatus() == -1){
+		else if(unmatcheditems.getStatus() == -1){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			TaggedChillersRemark taggedchillerremark = new TaggedChillersRemark()
 			MissingChillerProductsCategoryData missingchillercategory = new MissingChillerProductsCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			taggedchillerremark.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-			taggedchillerremark.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
-			missingchillercategory.setProductcategories(unmatchedproducts_status.getProducts())
-			missingchillercategory.setErrormessage_forproductcategories(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MISSING)
+			taggedchillerremark.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremark.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+			missingchillercategory.setProductcategories(unmatcheditems.getItems())
+			missingchillercategory.setErrormessage_forproductcategories(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 			taggedchillerremark.setMissingchillerproductscategories(missingchillercategory)
 			missingcategorydata.setTaggedchillersremarks(taggedchillerremark)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -200,6 +200,12 @@ public class ChillerProductsDataKeywords {
 			}
 			else if(flag == 2){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/ChillerUtilization/ChillerNotAvailable/VisitProductCategoryAssets"), null)
+			}
+			else if(flag == 3){
+				if(i == 1){
+					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/ChillerUtilization/ChillerNotAvailable/VisitProductCategoryAssets"), null)
+				}
+				else{}
 			}
 			else{
 			}
@@ -234,7 +240,7 @@ public class ChillerProductsDataKeywords {
 							productsdata.setFacingdata(productquantity)
 						}
 						else if(assettype.equalsIgnoreCase("Stock Count")){
-							productsdata.setStockcountdata(productquantity)
+							productsdata.setStocktakingdata_stockcountdata(productquantity)
 						}
 						else if(assettype.equalsIgnoreCase("Depth")){
 							productsdata.setDepthdata(productquantity)
@@ -246,7 +252,7 @@ public class ChillerProductsDataKeywords {
 							productsdata.setOverwritefacingdata(productquantity)
 						}
 						else if(assettype.equalsIgnoreCase("Stock Count")){
-							productsdata.setOverwritestockcountdata(productquantity)
+							productsdata.setOverwritestocktakingdata_stockcountdata(productquantity)
 						}
 						else if(assettype.equalsIgnoreCase("Depth")){
 							productsdata.setOverwritedepthdata(productquantity)
@@ -267,7 +273,7 @@ public class ChillerProductsDataKeywords {
 						productsdata.setFacingdata("0000")
 					}
 					else if(assettype.equalsIgnoreCase("Stock Count")){
-						productsdata.setStockcountdata("0000")
+						productsdata.setStocktakingdata_stockcountdata("0000")
 					}
 					else if(assettype.equalsIgnoreCase("Depth")){
 						productsdata.setDepthdata("0000")
@@ -279,7 +285,7 @@ public class ChillerProductsDataKeywords {
 						productsdata.setOverwritefacingdata("0000")
 					}
 					else if(assettype.equalsIgnoreCase("Stock Count")){
-						productsdata.setOverwritestockcountdata("0000")
+						productsdata.setOverwritestocktakingdata_stockcountdata("0000")
 					}
 					else if(assettype.equalsIgnoreCase("Depth")){
 						productsdata.setOverwritedepthdata("0000")
@@ -307,10 +313,10 @@ public class ChillerProductsDataKeywords {
 				else{
 					boolean flag = false
 					displayproductslist.add(lastproductnameafterswipe)
+					productsdata.setProduct(lastproductnameafterswipe)
 					for(int j=0; j<expectedproductslist.size(); j++){
 						LoadProductsData channelproduct = expectedproductslist.get(j)
 						String productname = channelproduct.getProduct()
-						productsdata.setProduct(lastproductnameafterswipe)
 						if(lastproductnameafterswipe.equalsIgnoreCase(productname)){
 							flag = true
 							String productquantity = channelproduct.getProduct_data()
@@ -321,7 +327,7 @@ public class ChillerProductsDataKeywords {
 									productsdata.setFacingdata(productquantity)
 								}
 								else if(assettype.equalsIgnoreCase("Stock Count")){
-									productsdata.setStockcountdata(productquantity)
+									productsdata.setStocktakingdata_stockcountdata(productquantity)
 								}
 								else if(assettype.equalsIgnoreCase("Depth")){
 									productsdata.setDepthdata(productquantity)
@@ -333,7 +339,7 @@ public class ChillerProductsDataKeywords {
 									productsdata.setOverwritefacingdata(productquantity)
 								}
 								else if(assettype.equalsIgnoreCase("Stock Count")){
-									productsdata.setOverwritestockcountdata(productquantity)
+									productsdata.setOverwritestocktakingdata_stockcountdata(productquantity)
 								}
 								else if(assettype.equalsIgnoreCase("Depth")){
 									productsdata.setOverwritedepthdata(productquantity)
@@ -354,7 +360,7 @@ public class ChillerProductsDataKeywords {
 								productsdata.setFacingdata("0000")
 							}
 							else if(assettype.equalsIgnoreCase("Stock Count")){
-								productsdata.setStockcountdata("0000")
+								productsdata.setStocktakingdata_stockcountdata("0000")
 							}
 							else if(assettype.equalsIgnoreCase("Depth")){
 								productsdata.setDepthdata("0000")
@@ -366,7 +372,7 @@ public class ChillerProductsDataKeywords {
 								productsdata.setOverwritefacingdata("0000")
 							}
 							else if(assettype.equalsIgnoreCase("Stock Count")){
-								productsdata.setOverwritestockcountdata("0000")
+								productsdata.setOverwritestocktakingdata_stockcountdata("0000")
 							}
 							else if(assettype.equalsIgnoreCase("Depth")){
 								productsdata.setOverwritedepthdata("0000")
@@ -401,11 +407,11 @@ public class ChillerProductsDataKeywords {
 				MissingCategoryData missingcategorydata = new MissingCategoryData()
 				MissingChillerProductsCategoryData missingchillerproductscategory = new MissingChillerProductsCategoryData()
 				missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-				taggedchillerremark.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-				taggedchillerremark.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+				taggedchillerremark.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+				taggedchillerremark.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
 				missingchillerproductscategory.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
 				missingchillerproductscategory.setProducts(products)
-				missingchillerproductscategory.setErrormessage_forproducts(ProjectConstants.MESSAGEFOR_PRODUCTSARE_NOTMATCH)
+				missingchillerproductscategory.setErrormessage_forproducts(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 				taggedchillerremark.setMissingchillerproductscategories(missingchillerproductscategory)
 				missingcategorydata.setTaggedchillersremarks(taggedchillerremark)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -438,11 +444,11 @@ public class ChillerProductsDataKeywords {
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			MissingChillerProductsCategoryData missingchillerproductscategory = new MissingChillerProductsCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			taggedchillerremark.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-			taggedchillerremark.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+			taggedchillerremark.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremark.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
 			missingchillerproductscategory.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
 			missingchillerproductscategory.setProducts(products)
-			missingchillerproductscategory.setErrormessage_forproducts(ProjectConstants.MESSAGEFOR_PRODUCTSARE_MORE)
+			missingchillerproductscategory.setErrormessage_forproducts(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 			taggedchillerremark.setMissingchillerproductscategories(missingchillerproductscategory)
 			missingcategorydata.setTaggedchillersremarks(taggedchillerremark)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -474,11 +480,11 @@ public class ChillerProductsDataKeywords {
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			MissingChillerProductsCategoryData missingchillerproductscategory = new MissingChillerProductsCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			taggedchillerremark.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-			taggedchillerremark.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+			taggedchillerremark.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremark.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
 			missingchillerproductscategory.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
 			missingchillerproductscategory.setProducts(products)
-			missingchillerproductscategory.setErrormessage_forproducts(ProjectConstants.MESSAGEFOR_PRODUCTSARE_MISSING)
+			missingchillerproductscategory.setErrormessage_forproducts(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 			taggedchillerremark.setMissingchillerproductscategories(missingchillerproductscategory)
 			missingcategorydata.setTaggedchillersremarks(taggedchillerremark)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -498,10 +504,16 @@ public class ChillerProductsDataKeywords {
 		TaggedChillersRemark taggedchillerremarks = new TaggedChillersRemark()
 		VisitedChillerProductsCategoryData visitedchillerproductscategory = new VisitedChillerProductsCategoryData()
 		visitedcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+		if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+			taggedchillerremarks.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremarks.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+		}
+		else{
+			taggedchillerremarks.setOverwrite_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremarks.setOverwrite_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+		}
 		visitedchillerproductscategory.setProductCategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
 		visitedchillerproductscategory.setShopproductsdata(shopproductsdata)
-		taggedchillerremarks.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-		taggedchillerremarks.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
 		taggedchillerremarks.setVisitedchillerproductscategories(visitedchillerproductscategory)
 		visitedcategorydata.setTaggedchillersremark(taggedchillerremarks)
 		for(int i=0; i< ProjectConstants.visitedshopdatainfo.size(); i++){
@@ -509,19 +521,31 @@ public class ChillerProductsDataKeywords {
 				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
 				ArrayList<VisitedCategoryData> visitedcategoriesdata = visitedshopdata.getVisitedcategoriesdata()
 				if(visitedcategoriesdata.size() != 0){
-					boolean flag = false
+					boolean maincategory_flag = false
 					for(int k=0; k<visitedcategoriesdata.size(); k++){
 						VisitedCategoryData visitedcategorydatainfo = visitedcategoriesdata.get(k)
 						if(visitedcategorydatainfo.getMaincategory().equals(visitedcategorydata.getMaincategory())){
+							maincategory_flag = true
 							ArrayList<TaggedChillersRemark> taggedchillersremarks = visitedcategorydatainfo.getTaggedchillersremark()
+							boolean chiller_type_remark_flag = false
 							for(int p=0; p<taggedchillersremarks.size(); p++){
 								TaggedChillersRemark taggedchillerremarkinfo = taggedchillersremarks.get(p)
-								if(taggedchillerremarkinfo.getChillertype().equals(taggedchillerremarks.getChillertype()) && taggedchillerremarkinfo.getChillerremark().equals(taggedchillerremarks.getChillerremark())){
+								if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+									taggedchillerremarkinfo.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+									taggedchillerremarkinfo.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+								}
+								else{
+									taggedchillerremarkinfo.setOverwrite_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+									taggedchillerremarkinfo.setOverwrite_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+								}
+								if((taggedchillerremarkinfo.getFirstvisit_chillertype().equals(taggedchillerremarks.getFirstvisit_chillertype()) && taggedchillerremarkinfo.getFirstvisit_chillerremark().equals(taggedchillerremarks.getFirstvisit_chillerremark())) || (taggedchillerremarkinfo.getFirstvisit_chillertype().equals(taggedchillerremarks.getOverwrite_chillertype()) && taggedchillerremarkinfo.getFirstvisit_chillerremark().equals(taggedchillerremarks.getOverwrite_chillerremark()))){
+									chiller_type_remark_flag = true
 									ArrayList<VisitedChillerProductsCategoryData> visitedchillerproductcategorydata = taggedchillerremarkinfo.getVisitedchillerproductscategories()
+									boolean productcategory_flag = false
 									for(int y=0; y< visitedchillerproductcategorydata.size(); y++){
 										VisitedChillerProductsCategoryData visitedchillerproductscategoryinfo = visitedchillerproductcategorydata.get(y)
 										if(visitedchillerproductscategoryinfo.getProductCategory().equals(visitedchillerproductscategory.getProductCategory())){
-											flag = true
+											productcategory_flag = true
 											ArrayList<ShopProductsData> shopproductdata = visitedchillerproductscategoryinfo.getShopproductsdata()
 											for(int z=0; z<shopproductdata.size(); z++){
 												ShopProductsData existingproductsdata = shopproductdata.get(z)
@@ -534,7 +558,7 @@ public class ChillerProductsDataKeywords {
 																break
 															}
 															else if(assettype.equals("Stock Count")){
-																existingproductsdata.setStockcountdata(newproductsdatainfo.getStockcountdata())
+																existingproductsdata.setStocktakingdata_stockcountdata(newproductsdatainfo.getStocktakingdata_stockcountdata())
 																break
 															}
 															else if(assettype.equals("Depth")){
@@ -553,7 +577,7 @@ public class ChillerProductsDataKeywords {
 																break
 															}
 															else if(assettype.equals("Stock Count")){
-																existingproductsdata.setOverwritestockcountdata(newproductsdatainfo.getOverwritestockcountdata())
+																existingproductsdata.setOverwritestocktakingdata_stockcountdata(newproductsdatainfo.getOverwritestocktakingdata_stockcountdata())
 																break
 															}
 															else{
@@ -564,11 +588,19 @@ public class ChillerProductsDataKeywords {
 											}
 										}
 									}
+									if(productcategory_flag == false){
+										taggedchillerremarkinfo.setVisitedchillerproductscategories(visitedchillerproductscategory)
+										break
+									}
 								}
+							}
+							if(chiller_type_remark_flag == false){
+								visitedcategorydatainfo.setTaggedchillersremark(taggedchillerremarks)
+								break
 							}
 						}
 					}
-					if(flag == false){
+					if(maincategory_flag == false){
 						ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategorydata)
 						break
 					}
@@ -611,7 +643,7 @@ public class ChillerProductsDataKeywords {
 							productsdata.setFacingdata(productquantity)
 						}
 						else if(assettype.equalsIgnoreCase("Stock Taking")){
-							productsdata.setStocktakingdata(productquantity)
+							productsdata.setStocktakingdata_stockcountdata(productquantity)
 						}
 						else{}
 					}
@@ -620,7 +652,7 @@ public class ChillerProductsDataKeywords {
 							productsdata.setOverwritefacingdata(productquantity)
 						}
 						else if(assettype.equalsIgnoreCase("Stock Taking")){
-							productsdata.setOverwritestocktakingdata(productquantity)
+							productsdata.setOverwritestocktakingdata_stockcountdata(productquantity)
 						}
 						else{
 						}
@@ -639,7 +671,7 @@ public class ChillerProductsDataKeywords {
 						productsdata.setFacingdata("0000")
 					}
 					else if(assettype.equalsIgnoreCase("Stock Taking")){
-						productsdata.setStocktakingdata("0000")
+						productsdata.setStocktakingdata_stockcountdata("0000")
 					}
 					else{}
 				}
@@ -648,7 +680,7 @@ public class ChillerProductsDataKeywords {
 						productsdata.setOverwritefacingdata("0000")
 					}
 					else if(assettype.equalsIgnoreCase("Stock Taking")){
-						productsdata.setOverwritestocktakingdata("0000")
+						productsdata.setOverwritestocktakingdata_stockcountdata("0000")
 					}
 					else{
 					}
@@ -673,10 +705,10 @@ public class ChillerProductsDataKeywords {
 				else{
 					boolean flag = false
 					displayproductslist.add(lastproductnameafterswipe)
+					productsdata.setProduct(lastproductnameafterswipe)
 					for(int j=0; j<expectedproductslist.size(); j++){
 						LoadProductsData channelproduct = expectedproductslist.get(j)
 						String productname = channelproduct.getProduct()
-						productsdata.setProduct(lastproductnameafterswipe)
 						if(lastproductnameafterswipe.equalsIgnoreCase(productname)){
 							flag = true
 							String productquantity = channelproduct.getProduct_data()
@@ -687,7 +719,7 @@ public class ChillerProductsDataKeywords {
 									productsdata.setFacingdata(productquantity)
 								}
 								else if(assettype.equalsIgnoreCase("Stock Taking")){
-									productsdata.setStocktakingdata(productquantity)
+									productsdata.setStocktakingdata_stockcountdata(productquantity)
 								}
 								else{}
 							}
@@ -696,7 +728,7 @@ public class ChillerProductsDataKeywords {
 									productsdata.setOverwritefacingdata(productquantity)
 								}
 								else if(assettype.equalsIgnoreCase("Stock Taking")){
-									productsdata.setOverwritestocktakingdata(productquantity)
+									productsdata.setOverwritestocktakingdata_stockcountdata(productquantity)
 								}
 								else{
 								}
@@ -715,7 +747,7 @@ public class ChillerProductsDataKeywords {
 								productsdata.setFacingdata("0000")
 							}
 							else if(assettype.equalsIgnoreCase("Stock Taking")){
-								productsdata.setStocktakingdata("0000")
+								productsdata.setStocktakingdata_stockcountdata("0000")
 							}
 							else{}
 						}
@@ -724,7 +756,7 @@ public class ChillerProductsDataKeywords {
 								productsdata.setOverwritefacingdata("0000")
 							}
 							else if(assettype.equalsIgnoreCase("Stock Taking")){
-								productsdata.setOverwritestocktakingdata("0000")
+								productsdata.setOverwritestocktakingdata_stockcountdata("0000")
 							}
 							else{
 							}
@@ -756,11 +788,11 @@ public class ChillerProductsDataKeywords {
 				MissingCategoryData missingcategorydata = new MissingCategoryData()
 				MissingChillerProductsCategoryData missingchillerproductscategory = new MissingChillerProductsCategoryData()
 				missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-				taggedchillerremark.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-				taggedchillerremark.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+				taggedchillerremark.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+				taggedchillerremark.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
 				missingchillerproductscategory.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
 				missingchillerproductscategory.setProducts(products)
-				missingchillerproductscategory.setErrormessage_forproducts(ProjectConstants.MESSAGEFOR_PRODUCTSARE_NOTMATCH)
+				missingchillerproductscategory.setErrormessage_forproducts(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 				taggedchillerremark.setMissingchillerproductscategories(missingchillerproductscategory)
 				missingcategorydata.setTaggedchillersremarks(taggedchillerremark)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -793,11 +825,11 @@ public class ChillerProductsDataKeywords {
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			MissingChillerProductsCategoryData missingchillerproductscategory = new MissingChillerProductsCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			taggedchillerremark.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-			taggedchillerremark.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+			taggedchillerremark.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremark.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
 			missingchillerproductscategory.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
 			missingchillerproductscategory.setProducts(products)
-			missingchillerproductscategory.setErrormessage_forproducts(ProjectConstants.MESSAGEFOR_PRODUCTSARE_MORE)
+			missingchillerproductscategory.setErrormessage_forproducts(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 			taggedchillerremark.setMissingchillerproductscategories(missingchillerproductscategory)
 			missingcategorydata.setTaggedchillersremarks(taggedchillerremark)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -829,11 +861,11 @@ public class ChillerProductsDataKeywords {
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			MissingChillerProductsCategoryData missingchillerproductscategory = new MissingChillerProductsCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			taggedchillerremark.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-			taggedchillerremark.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+			taggedchillerremark.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremark.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
 			missingchillerproductscategory.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
 			missingchillerproductscategory.setProducts(products)
-			missingchillerproductscategory.setErrormessage_forproducts(ProjectConstants.MESSAGEFOR_PRODUCTSARE_MISSING)
+			missingchillerproductscategory.setErrormessage_forproducts(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 			taggedchillerremark.setMissingchillerproductscategories(missingchillerproductscategory)
 			missingcategorydata.setTaggedchillersremarks(taggedchillerremark)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -853,10 +885,16 @@ public class ChillerProductsDataKeywords {
 		TaggedChillersRemark taggedchillerremarks = new TaggedChillersRemark()
 		VisitedChillerProductsCategoryData visitedchillerproductscategory = new VisitedChillerProductsCategoryData()
 		visitedcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+		if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+			taggedchillerremarks.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremarks.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+		}
+		else{
+			taggedchillerremarks.setOverwrite_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+			taggedchillerremarks.setOverwrite_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+		}
 		visitedchillerproductscategory.setProductCategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
 		visitedchillerproductscategory.setShopproductsdata(shopproductsdata)
-		taggedchillerremarks.setChillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
-		taggedchillerremarks.setChillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
 		taggedchillerremarks.setVisitedchillerproductscategories(visitedchillerproductscategory)
 		visitedcategorydata.setTaggedchillersremark(taggedchillerremarks)
 		for(int i=0; i< ProjectConstants.visitedshopdatainfo.size(); i++){
@@ -864,19 +902,31 @@ public class ChillerProductsDataKeywords {
 				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
 				ArrayList<VisitedCategoryData> visitedcategoriesdata = visitedshopdata.getVisitedcategoriesdata()
 				if(visitedcategoriesdata.size() != 0){
-					boolean flag = false
+					boolean maincategory_flag = false
 					for(int k=0; k<visitedcategoriesdata.size(); k++){
 						VisitedCategoryData visitedcategorydatainfo = visitedcategoriesdata.get(k)
 						if(visitedcategorydatainfo.getMaincategory().equals(visitedcategorydata.getMaincategory())){
+							maincategory_flag = true
 							ArrayList<TaggedChillersRemark> taggedchillersremarks = visitedcategorydatainfo.getTaggedchillersremark()
+							boolean chiller_type_remark_flag = false
 							for(int p=0; p<taggedchillersremarks.size(); p++){
 								TaggedChillersRemark taggedchillerremarkinfo = taggedchillersremarks.get(p)
-								if(taggedchillerremarkinfo.getChillertype().equals(taggedchillerremarks.getChillertype()) && taggedchillerremarkinfo.getChillerremark().equals(taggedchillerremarks.getChillerremark())){
+								if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+									taggedchillerremarkinfo.setFirstvisit_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+									taggedchillerremarkinfo.setFirstvisit_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+								}
+								else{
+									taggedchillerremarkinfo.setOverwrite_chillertype(ProjectConstants.CURRENTVISITING_CHILLERTYPE)
+									taggedchillerremarkinfo.setOverwrite_chillerremark(ProjectConstants.CURRENTVISITING_CHILLERREMARK)
+								}
+								if(taggedchillerremarkinfo.getFirstvisit_chillertype().equals(taggedchillerremarks.getFirstvisit_chillertype()) && taggedchillerremarkinfo.getFirstvisit_chillerremark().equals(taggedchillerremarks.getFirstvisit_chillerremark())){
+									chiller_type_remark_flag = true
 									ArrayList<VisitedChillerProductsCategoryData> visitedchillerproductcategorydata = taggedchillerremarkinfo.getVisitedchillerproductscategories()
+									boolean productcategory_flag = false
 									for(int y=0; y< visitedchillerproductcategorydata.size(); y++){
 										VisitedChillerProductsCategoryData visitedchillerproductscategoryinfo = visitedchillerproductcategorydata.get(y)
 										if(visitedchillerproductscategoryinfo.getProductCategory().equals(visitedchillerproductscategory.getProductCategory())){
-											flag = true
+											productcategory_flag = true
 											ArrayList<ShopProductsData> shopproductdata = visitedchillerproductscategoryinfo.getShopproductsdata()
 											for(int z=0; z<shopproductdata.size(); z++){
 												ShopProductsData existingproductsdata = shopproductdata.get(z)
@@ -889,7 +939,7 @@ public class ChillerProductsDataKeywords {
 																break
 															}
 															else if(assettype.equals("Stock Taking")){
-																existingproductsdata.setStocktakingdata(newproductsdatainfo.getStocktakingdata())
+																existingproductsdata.setStocktakingdata_stockcountdata(newproductsdatainfo.getStocktakingdata_stockcountdata())
 																break
 															}
 															else{}
@@ -900,7 +950,7 @@ public class ChillerProductsDataKeywords {
 																break
 															}
 															else if(assettype.equals("Stock Taking")){
-																existingproductsdata.setOverwritestocktakingdata(newproductsdatainfo.getOverwritestocktakingdata())
+																existingproductsdata.setOverwritestocktakingdata_stockcountdata(newproductsdatainfo.getOverwritestocktakingdata_stockcountdata())
 																break
 															}
 															else{
@@ -911,11 +961,17 @@ public class ChillerProductsDataKeywords {
 											}
 										}
 									}
+									if(productcategory_flag == false){
+										taggedchillerremarkinfo.setVisitedchillerproductscategories(visitedchillerproductscategory)
+									}
 								}
+							}
+							if(chiller_type_remark_flag == false){
+								visitedcategorydatainfo.setTaggedchillersremark(taggedchillerremarks)
 							}
 						}
 					}
-					if(flag == false){
+					if(maincategory_flag == false){
 						ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategorydata)
 						break
 					}

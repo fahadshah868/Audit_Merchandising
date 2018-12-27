@@ -34,8 +34,9 @@ import WebUiBuiltInKeywords as WebUI
 import com.ct.qa.constants.ProjectConstants
 import com.ct.qa.struct.LoadProductsData
 import com.ct.qa.struct.MissingCategoryData
+import com.ct.qa.struct.ProductCategoryWithProducts
 import com.ct.qa.struct.ShopProductsData
-import com.ct.qa.struct.UnmatchedProducts
+import com.ct.qa.struct.UnmatchedItems
 import com.ct.qa.struct.VisitedCategoryData
 import com.ct.qa.struct.VisitedShopDataInfo
 
@@ -45,12 +46,12 @@ public class ChannelProductsDataKeywords {
 	//visit chiller not allocated product categories in chiller
 	@Keyword
 	def visitChillerNotAllocatedProductCategories(int flag){
-		UnmatchedProducts unmatchedproducts_status = CompareDataKeywords.compareChannelWiseProductsCategories()
-		if(unmatchedproducts_status.getStatus() == 2){
+		UnmatchedItems unmatcheditems = CompareDataKeywords.compareChannelWiseProductsCategories()
+		if(unmatcheditems.getStatus() == 2){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategories(unmatchedproducts_status.getProducts())
-			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_NOTMATCH)
+			missingcategorydata.setProductcategories(unmatcheditems.getItems())
+			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, "")
@@ -60,11 +61,11 @@ public class ChannelProductsDataKeywords {
 				}
 			}
 		}
-		else if(unmatchedproducts_status.getStatus() == 1){
+		else if(unmatcheditems.getStatus() == 1){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategories(unmatchedproducts_status.getProducts())
-			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MORE)
+			missingcategorydata.setProductcategories(unmatcheditems.getItems())
+			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, "")
@@ -74,11 +75,11 @@ public class ChannelProductsDataKeywords {
 				}
 			}
 		}
-		else if(unmatchedproducts_status.getStatus() == -1){
+		else if(unmatcheditems.getStatus() == -1){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategories(unmatchedproducts_status.getProducts())
-			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MISSING)
+			missingcategorydata.setProductcategories(unmatcheditems.getItems())
+			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, "")
@@ -101,6 +102,7 @@ public class ChannelProductsDataKeywords {
 			}
 			else if(flag == 2){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Chiller/OverwriteProductCategoryAssets"), null)
+				MobileBuiltInKeywords.verifyElementText(findTestObject("ShopOpen/Chiller/Validate_ChillerNotAllocatedProductCategoryScreen" , [('package') : ProjectConstants.PACKAGENAME]),"Category:Chiller")
 			}
 			else{
 			}
@@ -108,12 +110,12 @@ public class ChannelProductsDataKeywords {
 	}
 	@Keyword
 	def visitNestradeProductsCategoriesWithDSA(int flag){
-		UnmatchedProducts unmatchedproducts_status = CompareDataKeywords.compareChannelWiseProductsCategories()
-		if(unmatchedproducts_status.getStatus() == 2){
+		UnmatchedItems unmatcheditems = CompareDataKeywords.compareChannelWiseProductsCategories()
+		if(unmatcheditems.getStatus() == 2){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategories(unmatchedproducts_status.getProducts())
-			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_NOTMATCH)
+			missingcategorydata.setProductcategories(unmatcheditems.getItems())
+			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, "")
@@ -123,11 +125,11 @@ public class ChannelProductsDataKeywords {
 				}
 			}
 		}
-		else if(unmatchedproducts_status.getStatus() == 1){
+		else if(unmatcheditems.getStatus() == 1){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategories(unmatchedproducts_status.getProducts())
-			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MORE)
+			missingcategorydata.setProductcategories(unmatcheditems.getItems())
+			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, "")
@@ -137,11 +139,11 @@ public class ChannelProductsDataKeywords {
 				}
 			}
 		}
-		else if(unmatchedproducts_status.getStatus() == -1){
+		else if(unmatcheditems.getStatus() == -1){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategories(unmatchedproducts_status.getProducts())
-			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MISSING)
+			missingcategorydata.setProductcategories(unmatcheditems.getItems())
+			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, "")
@@ -160,9 +162,11 @@ public class ChannelProductsDataKeywords {
 			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 			if(flag == 1){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/VisitProductCategoryAssetsWithDSA"), null)
+				MobileBuiltInKeywords.verifyElementText(findTestObject('ShopOpen/Nestrade/Validate_NestradePorductCategoryScreen', [('package') : ProjectConstants.PACKAGENAME]),'Category:Nestrade')
 			}
 			else if(flag == 2){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/OverwriteProductCategoryAssetsWithDSA"), null)
+				MobileBuiltInKeywords.verifyElementText(findTestObject('ShopOpen/Nestrade/Validate_NestradePorductCategoryScreen', [('package') : ProjectConstants.PACKAGENAME]),'Category:Nestrade')
 			}
 			else{
 			}
@@ -170,12 +174,12 @@ public class ChannelProductsDataKeywords {
 	}
 	@Keyword
 	def visitNestradeProductsCategoriesWithNSFD(int flag){
-		UnmatchedProducts unmatchedproducts_status = CompareDataKeywords.compareChannelWiseProductsCategories()
-		if(unmatchedproducts_status.getStatus() == 2){
+		UnmatchedItems unmatcheditems = CompareDataKeywords.compareChannelWiseProductsCategories()
+		if(unmatcheditems.getStatus() == 2){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategories(unmatchedproducts_status.getProducts())
-			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_NOTMATCH)
+			missingcategorydata.setProductcategories(unmatcheditems.getItems())
+			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, "")
@@ -185,11 +189,11 @@ public class ChannelProductsDataKeywords {
 				}
 			}
 		}
-		else if(unmatchedproducts_status.getStatus() == 1){
+		else if(unmatcheditems.getStatus() == 1){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategories(unmatchedproducts_status.getProducts())
-			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MORE)
+			missingcategorydata.setProductcategories(unmatcheditems.getItems())
+			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, "")
@@ -199,11 +203,11 @@ public class ChannelProductsDataKeywords {
 				}
 			}
 		}
-		else if(unmatchedproducts_status.getStatus() == -1){
+		else if(unmatcheditems.getStatus() == -1){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategories(unmatchedproducts_status.getProducts())
-			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MISSING)
+			missingcategorydata.setProductcategories(unmatcheditems.getItems())
+			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, "")
@@ -222,9 +226,11 @@ public class ChannelProductsDataKeywords {
 			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 			if(flag == 1){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/VisitProductCategoryAssetsWithNSFD"), null)
+				MobileBuiltInKeywords.verifyElementText(findTestObject('ShopOpen/Nestrade/Validate_NestradePorductCategoryScreen', [('package') : ProjectConstants.PACKAGENAME]),'Category:Nestrade')
 			}
 			else if(flag == 2){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Nestrade/OverwriteProductCategoryAssetsWithNSFD"), null)
+				MobileBuiltInKeywords.verifyElementText(findTestObject('ShopOpen/Nestrade/Validate_NestradePorductCategoryScreen', [('package') : ProjectConstants.PACKAGENAME]),'Category:Nestrade')
 			}
 			else{
 			}
@@ -261,7 +267,7 @@ public class ChannelProductsDataKeywords {
 							productsdata.setFacingdata(productquantity)
 						}
 						else if(assettype.equalsIgnoreCase("Stock Taking")){
-							productsdata.setStocktakingdata(productquantity)
+							productsdata.setStocktakingdata_stockcountdata(productquantity)
 						}
 						else{}
 					}
@@ -270,7 +276,7 @@ public class ChannelProductsDataKeywords {
 							productsdata.setOverwritefacingdata(productquantity)
 						}
 						else if(assettype.equalsIgnoreCase("Stock Taking")){
-							productsdata.setOverwritestocktakingdata(productquantity)
+							productsdata.setOverwritestocktakingdata_stockcountdata(productquantity)
 						}
 						else{
 						}
@@ -289,7 +295,7 @@ public class ChannelProductsDataKeywords {
 						productsdata.setFacingdata("0000")
 					}
 					else if(assettype.equalsIgnoreCase("Stock Taking")){
-						productsdata.setStocktakingdata("0000")
+						productsdata.setStocktakingdata_stockcountdata("0000")
 					}
 					else{}
 				}
@@ -298,7 +304,7 @@ public class ChannelProductsDataKeywords {
 						productsdata.setOverwritefacingdata("0000")
 					}
 					else if(assettype.equalsIgnoreCase("Stock Taking")){
-						productsdata.setOverwritestocktakingdata("0000")
+						productsdata.setOverwritestocktakingdata_stockcountdata("0000")
 					}
 					else{
 					}
@@ -323,10 +329,10 @@ public class ChannelProductsDataKeywords {
 				else{
 					boolean flag = false
 					displayproductslist.add(lastproductnameafterswipe)
+					productsdata.setProduct(lastproductnameafterswipe)
 					for(int j=0; j<expectedproductslist.size(); j++){
 						LoadProductsData channelproduct = expectedproductslist.get(j)
 						String productname = channelproduct.getProduct()
-						productsdata.setProduct(productname)
 						if(lastproductnameafterswipe.equalsIgnoreCase(productname)){
 							flag = true
 							String productquantity = channelproduct.getProduct_data()
@@ -337,7 +343,7 @@ public class ChannelProductsDataKeywords {
 									productsdata.setFacingdata(productquantity)
 								}
 								else if(assettype.equalsIgnoreCase("Stock Taking")){
-									productsdata.setStocktakingdata(productquantity)
+									productsdata.setStocktakingdata_stockcountdata(productquantity)
 								}
 								else{}
 							}
@@ -346,7 +352,7 @@ public class ChannelProductsDataKeywords {
 									productsdata.setOverwritefacingdata(productquantity)
 								}
 								else if(assettype.equalsIgnoreCase("Stock Taking")){
-									productsdata.setOverwritestocktakingdata(productquantity)
+									productsdata.setOverwritestocktakingdata_stockcountdata(productquantity)
 								}
 								else{
 								}
@@ -365,7 +371,7 @@ public class ChannelProductsDataKeywords {
 								productsdata.setFacingdata("0000")
 							}
 							else if(assettype.equalsIgnoreCase("Stock Taking")){
-								productsdata.setStocktakingdata("0000")
+								productsdata.setStocktakingdata_stockcountdata("0000")
 							}
 							else{}
 						}
@@ -374,7 +380,7 @@ public class ChannelProductsDataKeywords {
 								productsdata.setOverwritefacingdata("0000")
 							}
 							else if(assettype.equalsIgnoreCase("Stock Taking")){
-								productsdata.setOverwritestocktakingdata("0000")
+								productsdata.setOverwritestocktakingdata_stockcountdata("0000")
 							}
 							else{
 							}
@@ -406,7 +412,7 @@ public class ChannelProductsDataKeywords {
 				missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
 				missingcategorydata.setProducts(products)
 				missingcategorydata.setProductCategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
-				missingcategorydata.setProducts_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSARE_NOTMATCH)
+				missingcategorydata.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 					if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, assettype)
@@ -439,7 +445,7 @@ public class ChannelProductsDataKeywords {
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
 			missingcategorydata.setProducts(products)
 			missingcategorydata.setProductCategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
-			missingcategorydata.setProducts_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSARE_MORE)
+			missingcategorydata.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, assettype)
@@ -467,7 +473,7 @@ public class ChannelProductsDataKeywords {
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
 			missingcategorydata.setProductCategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
-			missingcategorydata.setProducts_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSARE_MISSING)
+			missingcategorydata.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 			missingcategorydata.setProducts(products)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
@@ -484,9 +490,17 @@ public class ChannelProductsDataKeywords {
 			KeywordUtil.logInfo(message)
 		}
 		VisitedCategoryData visitedcategorydata = new VisitedCategoryData()
+		ProductCategoryWithProducts productcategorywithproducts = new ProductCategoryWithProducts()
 		visitedcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-		visitedcategorydata.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
-		visitedcategorydata.setShopProductsdata(shopproductsdata)
+		if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+			visitedcategorydata.setFirstvisit_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+		}
+		else{
+			visitedcategorydata.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+		}
+		productcategorywithproducts.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
+		productcategorywithproducts.setShopproductsdata(shopproductsdata)
+		visitedcategorydata.setProductcategorywithproducts(productcategorywithproducts)
 		for(int i=0; i< ProjectConstants.visitedshopdatainfo.size(); i++){
 			if(ProjectConstants.visitedshopdatainfo.get(i).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)){
 				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
@@ -495,38 +509,66 @@ public class ChannelProductsDataKeywords {
 					boolean flag = false
 					for(int k=0; k<visitedcategoriesdata.size(); k++){
 						VisitedCategoryData visitedcategorydatainfo = visitedcategoriesdata.get(k)
-						if(visitedcategorydatainfo.getMaincategory().equals(visitedcategorydata.getMaincategory()) && visitedcategorydatainfo.getProductcategory().equals(visitedcategorydata.getProductcategory())){
+						if(visitedcategorydatainfo.getMaincategory().equals(visitedcategorydata.getMaincategory())){
 							flag = true
-							for(int l=0; l< visitedcategorydatainfo.getShopProductsdata().size(); l++){
-								ShopProductsData existingproductsdata = visitedcategorydatainfo.getShopProductsdata().get(l)
-								for(int m=0; m< shopproductsdata.size(); m++){
-									ShopProductsData newproductsdatainfo = shopproductsdata.get(m)
-									if(existingproductsdata.getProduct().equals(newproductsdatainfo.getProduct())){
-										if(ProjectConstants.SCENARIO.equals("first visit")){
-											if(assettype.equals("Facing")){
-												existingproductsdata.setFacingdata(newproductsdatainfo.getFacingdata())
-												break
-											}
-											else if(assettype.equals("Stock Taking")){
-												existingproductsdata.setStocktakingdata(newproductsdatainfo.getStocktakingdata())
-												break
-											}
-											else{
-											}
-										}
-										else{
-											if(assettype.equals("Facing")){
-												existingproductsdata.setOverwritefacingdata(newproductsdatainfo.getOverwritefacingdata())
-												break
-											}
-											else if(assettype.equals("Stock Taking")){
-												existingproductsdata.setOverwritestocktakingdata(newproductsdatainfo.getOverwritestocktakingdata())
-												break
-											}
-											else{
+							if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+								visitedcategorydatainfo.setFirstvisit_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+							}
+							else{
+								visitedcategorydatainfo.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+							}
+							ArrayList<ProductCategoryWithProducts> productcategorywithproductsdatalist = visitedcategorydatainfo.getProductcategorywithproducts()
+							if(productcategorywithproductsdatalist != null){
+								boolean productcategoryflag = false
+								for(int h=0; h< productcategorywithproductsdatalist.size(); h++){
+									ProductCategoryWithProducts productcategorywithproductsdata = productcategorywithproductsdatalist.get(h)
+									if(productcategorywithproductsdata.getProductcategory().equals(productcategorywithproducts.getProductcategory())){
+										productcategoryflag = true
+										for(int l=0; l< productcategorywithproductsdata.getShopproductsdata().size(); l++){
+											ShopProductsData existingproductsdata = productcategorywithproductsdata.getShopproductsdata().get(l)
+											for(int m=0; m< shopproductsdata.size(); m++){
+												ShopProductsData newproductsdatainfo = shopproductsdata.get(m)
+												if(existingproductsdata.getProduct().equals(newproductsdatainfo.getProduct())){
+													if(ProjectConstants.SCENARIO.equals("first visit")){
+														if(assettype.equals("Facing")){
+															existingproductsdata.setFacingdata(newproductsdatainfo.getFacingdata())
+															break
+														}
+														else if(assettype.equals("Stock Taking")){
+															existingproductsdata.setStocktakingdata_stockcountdata(newproductsdatainfo.getStocktakingdata_stockcountdata())
+															break
+														}
+														else{
+														}
+													}
+													else{
+														if(assettype.equals("Facing")){
+															existingproductsdata.setOverwritefacingdata(newproductsdatainfo.getOverwritefacingdata())
+															break
+														}
+														else if(assettype.equals("Stock Taking")){
+															existingproductsdata.setOverwritestocktakingdata_stockcountdata(newproductsdatainfo.getOverwritestocktakingdata_stockcountdata())
+															break
+														}
+														else{
+														}
+													}
+												}
 											}
 										}
 									}
+									else{
+									}
+								}
+								if(productcategoryflag == false){
+									if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+										visitedcategorydatainfo.setFirstvisit_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+									}
+									else if(assettype.equalsIgnoreCase("Facing")){
+										visitedcategorydatainfo.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+									}
+									else{}
+									visitedcategorydatainfo.setProductcategorywithproducts(productcategorywithproducts)
 								}
 							}
 						}

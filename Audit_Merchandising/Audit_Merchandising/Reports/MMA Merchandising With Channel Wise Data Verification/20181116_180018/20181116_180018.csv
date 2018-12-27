@@ -1,0 +1,42 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+MMA Merchandising With Channel Wise Data Verification,,,2018-11-16 18:00:21,2018-11-16 18:16:42,16m - 21.298s,FAILED
+,,,,,,
+Test Cases/LaunchingApp/LaunchApp,,,2018-11-16 18:00:22,2018-11-16 18:00:46,24.591s,PASSED
+startApplication,,launch application,2018-11-16 18:00:23,2018-11-16 18:00:41,18.555s,PASSED
+delay,,delay of 5 seconds,2018-11-16 18:00:41,2018-11-16 18:00:46,5.064s,PASSED
+,,,,,,
+Test Cases/SliderOptions/VisitSliderOptions,,,2018-11-16 18:00:46,2018-11-16 18:02:02,1m - 15.577s,PASSED
+verifyElementText,,,2018-11-16 18:00:47,2018-11-16 18:00:50,3.224s,PASSED
+swipe,,,2018-11-16 18:00:50,2018-11-16 18:00:51,0.860s,PASSED
+swipe,,,2018-11-16 18:00:51,2018-11-16 18:00:51,0.773s,PASSED
+verifyElementExist,,,2018-11-16 18:00:51,2018-11-16 18:00:52,0.348s,PASSED
+com.ct.qa.keywords.SliderOptionsKeywords.valideSliderOptions,,,2018-11-16 18:00:52,2018-11-16 18:01:19,27.369s,PASSED
+swipe,,,2018-11-16 18:01:19,2018-11-16 18:01:20,0.836s,PASSED
+swipe,,,2018-11-16 18:01:20,2018-11-16 18:01:21,1.012s,PASSED
+com.ct.qa.keywords.SliderOptionsKeywords.findSliderOption,,,2018-11-16 18:01:21,2018-11-16 18:01:28,7.105s,PASSED
+com.ct.qa.keywords.SliderOptionsKeywords.findSliderOption,,,2018-11-16 18:01:28,2018-11-16 18:01:41,12.890s,PASSED
+com.ct.qa.keywords.SliderOptionsKeywords.findSliderOption,,,2018-11-16 18:01:41,2018-11-16 18:02:00,18.785s,PASSED
+swipe,,,2018-11-16 18:02:00,2018-11-16 18:02:01,0.967s,PASSED
+swipe,,,2018-11-16 18:02:01,2018-11-16 18:02:02,0.951s,PASSED
+com.ct.qa.keywords.SliderOptionsKeywords.displayMissingSliderOptionsInReport,,,2018-11-16 18:02:02,2018-11-16 18:02:02,0.014s,PASSED
+,,,,,,
+Test Cases/DistributionPoint/VisitDistributionPoint,,,2018-11-16 18:02:02,2018-11-16 18:02:42,40.034s,PASSED
+verifyElementText,,validate dashboard screen appearance,2018-11-16 18:02:03,2018-11-16 18:02:04,1.060s,PASSED
+tap,,tap on start your day button,2018-11-16 18:02:04,2018-11-16 18:02:04,0.422s,PASSED
+delay,,delay of 15 seconds for check in through map screen,2018-11-16 18:02:04,2018-11-16 18:02:19,15.010s,PASSED
+verifyElementExist,,validate map screen appearance,2018-11-16 18:02:19,2018-11-16 18:02:20,1.321s,PASSED
+tap,,tap on check in button through map,2018-11-16 18:02:20,2018-11-16 18:02:21,0.643s,PASSED
+verifyElementExist,,validate confirm popup appearance,2018-11-16 18:02:21,2018-11-16 18:02:22,1.109s,PASSED
+tap,,tap on confirm popup no button,2018-11-16 18:02:22,2018-11-16 18:02:23,1.218s,PASSED
+verifyElementText,,validate channel summary detail screen appearance,2018-11-16 18:02:23,2018-11-16 18:02:24,0.530s,PASSED
+tap,,tap on next button to further proceed,2018-11-16 18:02:24,2018-11-16 18:02:25,1.066s,PASSED
+verifyElementText,,validate distribution point screen appearance,2018-11-16 18:02:25,2018-11-16 18:02:27,1.627s,PASSED
+com.ct.qa.keywords.DistributionPointKeywords.visitdistributionPoint,,enter quantity of products on distribution point,2018-11-16 18:02:27,2018-11-16 18:02:40,13.504s,PASSED
+tap,,tap on submit button after enter the quantity of products on distribution point,2018-11-16 18:02:40,2018-11-16 18:02:41,0.986s,PASSED
+verifyElementText,,validate dashboard screen appearance,2018-11-16 18:02:41,2018-11-16 18:02:42,0.607s,PASSED
+,,,,,,
+Test Cases/VisitShopScenarios/VisitShopsWithDataVerification,,,2018-11-16 18:02:42,2018-11-16 18:16:42,14m - 0.383s,FAILED
+verifyElementText,,validate dashboard screen appearance,2018-11-16 18:02:42,2018-11-16 18:02:43,0.455s,PASSED
+tap,,tap on start your day button,2018-11-16 18:02:43,2018-11-16 18:02:43,0.459s,PASSED
+verifyElementText,,Validate shops list screen appearance,2018-11-16 18:02:43,2018-11-16 18:02:45,1.726s,PASSED
+com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopWith_DataVerification,,select shops from shops list for data verification,2018-11-16 18:02:45,2018-11-16 18:16:42,13m - 57.269s,FAILED

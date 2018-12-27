@@ -7,6 +7,7 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import com.ct.qa.constants.ProjectConstants
 import com.ct.qa.struct.LoadProductsData
+import com.ct.qa.struct.QuestionsData
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory
@@ -77,6 +78,73 @@ public class LoadDataKeywords {
 		catch(Exception ex){
 		}
 	}
+	//load Slider Options sheet
+	def static loadShopActionsSheet(){
+		try{
+			FileInputStream inputStream = new FileInputStream(new File(ProjectConstants.EXCEL_FILEPATH))
+			XSSFWorkbook wb = new XSSFWorkbook(inputStream)
+			XSSFSheet sheet = wb.getSheet(ProjectConstants.SHOPACTIONSSHEET)
+			return sheet
+		}
+		catch(Exception ex){
+		}
+	}
+	//load Slider Options sheet
+	def static loadSurveyQuestionsSheet(){
+		try{
+			FileInputStream inputStream = new FileInputStream(new File(ProjectConstants.EXCEL_FILEPATH))
+			XSSFWorkbook wb = new XSSFWorkbook(inputStream)
+			XSSFSheet sheet = wb.getSheet(ProjectConstants.SURVEYQUESTIONSSHEET)
+			return sheet
+		}
+		catch(Exception ex){
+		}
+	}
+	//load audit question category list
+	def static loadSurveyQuestionCategoryList(){
+		DataFormatter dataformatter = new DataFormatter()
+		ArrayList<String> expectedquestioncategorylist = new ArrayList<String>()
+		XSSFSheet sheet = loadSurveyQuestionsSheet()
+		int totalrows = sheet.getLastRowNum()
+		for(int i=1; i<= totalrows; i++){
+			Row row = sheet.getRow(i)
+			String questioncategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEY_QUESTIONCATEGORY))
+			expectedquestioncategorylist.add(questioncategory)
+		}
+		return expectedquestioncategorylist
+	}
+	//load audit question list
+	def static loadSurveyQuestionsList(){
+		DataFormatter dataformatter = new DataFormatter()
+		ArrayList<QuestionsData> questions = new ArrayList<QuestionsData>()
+		XSSFSheet sheet = loadSurveyQuestionsSheet()
+		int totalrows = sheet.getLastRowNum()
+		for(int i=1; i<= totalrows; i++){
+			Row row = sheet.getRow(i)
+			String questioncategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEY_QUESTIONCATEGORY))
+			if(ProjectConstants.CURRENTVISITING_QUESTIONCATEGORY.equalsIgnoreCase(questioncategory)){
+				QuestionsData question = new QuestionsData()
+				question.setQuestion(dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEY_QUESTION)))
+				question.setQuestionoption(dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEY_QUESTIONOPTION)))
+				question.setQuestionoption_takepicture(dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEY_QUESTIONOPTION_TAKEPICTURE)))
+				questions.add(question)
+			}
+		}
+		return questions
+	}
+	//load shop actions
+	def static loadShopActionsList(){
+		DataFormatter dataformatter = new DataFormatter()
+		ArrayList<String> expectedshopactionslist = new ArrayList<String>()
+		XSSFSheet sheet = loadShopActionsSheet()
+		int totalrows = sheet.getLastRowNum()
+		for(int i=1; i<= totalrows; i++){
+			Row row = sheet.getRow(i)
+			String shopaction = dataformatter.formatCellValue(row.getCell(ProjectConstants.SHOPACTIONS))
+			expectedshopactionslist.add(shopaction)
+		}
+		return expectedshopactionslist
+	}
 	//load shop categories
 	def static loadShopCategories(){
 		DataFormatter dataformatter = new DataFormatter()
@@ -130,6 +198,11 @@ public class LoadDataKeywords {
 			String channelname = "Channel: "+channel
 			String maincategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.CHANNEL_MAINCATEGORY))
 			String productcategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.CHANNEL_PRODUCTCATEGORY))
+
+			String a = ProjectConstants.CURRENTVISITING_SHOPCHANNEL
+			String b = ProjectConstants.CURRENTVISITING_MAINCATEGORY
+			String c = ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY
+
 			if((ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_MAINCATEGORY.equalsIgnoreCase(maincategory)) && ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY.equalsIgnoreCase(productcategory)){
 				LoadProductsData channelproduct = new LoadProductsData()
 				String product = dataformatter.formatCellValue(row.getCell(ProjectConstants.CHANNEL_PRODUCT))

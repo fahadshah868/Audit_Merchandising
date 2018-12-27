@@ -32,8 +32,7 @@ MobileBuiltInKeywords.tap(findTestObject('DashboardScreenElements/StartYourDay',
 Mobile.delay(15, FailureHandling.STOP_ON_FAILURE)
 
 'validate map screen appearance'
-MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_MapScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
+MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_MapScreen'), 0)
 
 'tap on check in button through map'
 MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/Location_CheckIn', [('package') : ProjectConstants.PACKAGENAME]), 
@@ -65,8 +64,4 @@ CustomKeywords.'com.ct.qa.keywords.DistributionPointKeywords.visitdistributionPo
 'tap on submit button after enter the quantity of products on distribution point'
 MobileBuiltInKeywords.tap(findTestObject('DistributionPoint/DistributionPoint_SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
-
-'validate dashboard screen appearance'
-MobileBuiltInKeywords.verifyElementText(findTestObject('DashboardScreenElements/Validate_DashboardScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'Dashboard')
 
