@@ -19,11 +19,23 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable
 
 public class QuestionsData {
-
-	public String questioncategory
 	public String question
 	public String questionoption
-	public String questionoption_takepicture
+	public String questionoption_takepicture
+	public String overwrite_questionoption
+	public String overwrite_questionoption_takepicture
+	public String getOverwrite_questionoption() {
+		return overwrite_questionoption;
+	}
+	public void setOverwrite_questionoption(String overwrite_questionoption) {
+		this.overwrite_questionoption = overwrite_questionoption;
+	}
+	public String getOverwrite_questionoption_takepicture() {
+		return overwrite_questionoption_takepicture;
+	}
+	public void setOverwrite_questionoption_takepicture(String overwrite_questionoption_takepicture) {
+		this.overwrite_questionoption_takepicture = overwrite_questionoption_takepicture;
+	}
 	public String getQuestioncategory() {
 		return questioncategory;
 	}
